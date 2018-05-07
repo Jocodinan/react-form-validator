@@ -1,0 +1,19 @@
+{
+    "name": "boilerplate",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-scripts": "1.0.17",
+        "npm-run-all": "^4.1.2"
+    },
+    "scripts": {
+        "start-js": "react-scripts start",
+        "start": "REACT_APP_ENV=develop npm-run-all -p start-js",
+        "build-js": "react-scripts build",
+        "build": "REACT_APP_ENV=production npm-run-all build-js",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    }
+}
