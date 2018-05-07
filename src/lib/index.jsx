@@ -55,10 +55,10 @@ export default class FormValidator extends Component{
           if(this.state.invalidFields.includes(field.name)){
             invalidField = true;
 
-            if(field.invalidSetup && !field.invalidSetup.tooltip)
+            if(field.invalidSetup && !field.invalidSetup.errorMessage)
               icon = <i className={field.invalidSetup.icons.invalid}></i>;
-            else if(field.invalidSetup && field.invalidSetup.tooltip)
-              icon = field.invalidSetup.tooltip;
+            else if(field.invalidSetup && field.invalidSetup.errorMessage)
+              icon = field.invalidSetup.errorMessage;
 
             if(field.errorMessage && !field.invalidSetup)
               errorMessage = <p className={ this.props.errorMessageClass }>{ field.errorMessage }</p>
@@ -105,7 +105,7 @@ export default class FormValidator extends Component{
   }
   validateField(field){
     return field.validators.map((validator) => {
-      return Validators[validator](field.value);
+      return Validators[validator](field.value, field.checked);
     });
   }
   render(){
