@@ -1,7 +1,7 @@
 {
-  "name": "react-component-example-project",
+  "name": "react-form-validator",
   "version": "0.1.0",
-  "description": "A minimal boilerplate for building a react component for npm, including a demo page.",
+  "description": "React form validator with custom validations",
   "main": "lib/index.js",
   "scripts": {
     "dev": "concurrently \"npm run lib:watch\" \"npm run docs\"",
