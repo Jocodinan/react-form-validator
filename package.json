@@ -1,5 +1,5 @@
 {
-  "name": "react-form-validator",
+  "name": "react-form-validizr",
   "version": "0.1.0",
   "description": "React form validator with custom validations",
   "main": "lib/index.js",
