@@ -5,3 +5,8 @@ This is a simple react component package to create forms and custom validations.
 ```sh
 npm install react-form-validizr
 ```
+
+### Live demo example
+```sh
+https://jocodinan.github.io/react-form-validator/
+```
