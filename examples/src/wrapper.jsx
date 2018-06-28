@@ -11,6 +11,7 @@ export default class Wrapper extends Component{
 
     this.state = {
       text: '',
+      secondText: '',
       pass: '',
       email: '',
       checkbox: false,
@@ -65,9 +66,9 @@ export default class Wrapper extends Component{
                   errorMessage: <span className="error-message">Debes ingresar un texto</span>
                 },
                 placeholder: 'Ingrese una texto', //field place holder
-                value: this.state.text, //field value
+                value: this.state.secondText, //field value
                 label: 'Ingrese un texto:', //field label
-                onChangeFunc: this.onChangeHandler.bind(null, 'text'), //on change field function
+                onChangeFunc: this.onChangeHandler.bind(null, 'secondText'), //on change field function
                 validators: ['required'] //The validation type required
               },
               {
@@ -129,7 +130,7 @@ export default class Wrapper extends Component{
                 value: this.state.textarea,
                 label: 'Ingrese un texto:',
                 onChangeFunc: this.onChangeHandler.bind(null, 'textarea'),
-                validators: ['required', 'minCharacters8']
+                validators: ['required']
               }
             ]
           }
