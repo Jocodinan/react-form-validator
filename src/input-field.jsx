@@ -2,32 +2,44 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class InputField extends Component{
-  render(){
-    const { field, invalidField, InvalidInputClass, errorMessage, icon } = this.props,
-          Tag = field.tag;
+  constructor(props){
+    super(props);
 
-    return(
-      <label className={field.labelClass +' '+ (invalidField ? InvalidInputClass : '')}>
-      <span>{ field.label }</span>
-      <Tag 
-        className={ field.fieldClass } 
-        type={ field.type } 
-        name={ field.name } 
-        placeholder={ field.placeholder } 
-        value={ field.value }
-        onChange={ field.onChangeFunc } >
-      </Tag>
-      { errorMessage }
-      { icon }
-    </label>
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+  onChangeHandler(event){
+    const { onChange } = this.props;
+    onChange(event);
+  }
+  getErrorMessage(){
+    const { error, invalidFields, errorMessageClass, name } = this.props;
+
+    if(!invalidFields.includes(name)){ return null; }
+
+    return <p className={ errorMessageClass }>{ error }</p>
+  }
+  render(){
+    const { className, name, placeholder, type, value, validators, invalidFields, invalidClass } = this.props,
+          invalidClassName = invalidFields.includes(name) ? invalidClass : '',
+          errorMessage = this.getErrorMessage();
+    
+  return (
+      <span>
+        <input className={`${className} ${invalidClassName}`} name={name} placeholder={placeholder} type={type} value={value} onChange={this.onChangeHandler} />
+        { errorMessage }
+      </span>
     );
   }
 }
 
 InputField.propTypes = {
-  field: PropTypes.object,
-  invalidField: PropTypes.bool,
-  InvalidInputClass: PropTypes.string,
-  errorMessage: PropTypes.element,
-  icon: PropTypes.element
+  className: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
+  invalidFields: PropTypes.array,
+  invalidClass: PropTypes.string,
+  errorMessageClass: PropTypes.string
 }
